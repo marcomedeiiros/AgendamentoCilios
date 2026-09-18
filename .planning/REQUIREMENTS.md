@@ -136,13 +136,80 @@ Quais fases cobrem quais requisitos. Preenchido durante a criação do roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (preenchido pelo roadmapper) | | |
+| IDEN-01 | Phase 2 | Pending |
+| IDEN-02 | Phase 2 | Pending |
+| IDEN-03 | Phase 5 | Pending |
+| IDEN-04 | Phase 5 | Pending |
+| IDEN-05 | Phase 5 | Pending |
+| IDEN-06 | Phase 1 | Pending |
+| SERV-01 | Phase 1 | Pending |
+| SERV-02 | Phase 1 | Pending |
+| SERV-03 | Phase 1 | Pending |
+| SERV-04 | Phase 1 | Pending |
+| AVAIL-01 | Phase 1 | Pending |
+| AVAIL-02 | Phase 1 | Pending |
+| AVAIL-03 | Phase 1 | Pending |
+| AVAIL-04 | Phase 1 | Pending |
+| AVAIL-05 | Phase 2 | Pending |
+| AVAIL-06 | Phase 2 | Pending |
+| BOOK-01 | Phase 2 | Pending |
+| BOOK-02 | Phase 2 | Pending |
+| BOOK-03 | Phase 2 | Pending |
+| BOOK-04 | Phase 3 | Pending |
+| BOOK-05 | Phase 2 | Pending |
+| BOOK-06 | Phase 2 | Pending |
+| BOOK-07 | Phase 2 | Pending |
+| BOOK-08 | Phase 2 | Pending |
+| BOOK-09 | Phase 2 | Pending |
+| PAY-01 | Phase 3 | Pending |
+| PAY-02 | Phase 5 | Pending |
+| PAY-03 | Phase 3 | Pending |
+| PAY-04 | Phase 3 | Pending |
+| PAY-05 | Phase 3 | Pending |
+| PAY-06 | Phase 3 | Pending |
+| PAY-07 | Phase 5 | Pending |
+| PAY-08 | Phase 3 | Pending |
+| NOTIF-01 | Phase 4 | Pending |
+| NOTIF-02 | Phase 4 | Pending |
+| NOTIF-03 | Phase 4 | Pending |
+| NOTIF-04 | Phase 4 | Pending |
+| NOTIF-05 | Phase 4 | Pending |
+| NOTIF-06 | Phase 4 | Pending |
+| NOTIF-07 | Phase 4 | Pending |
+| COURSE-01 | Phase 5 | Pending |
+| COURSE-02 | Phase 5 | Pending |
+| COURSE-03 | Phase 5 | Pending |
+| COURSE-04 | Phase 5 | Pending |
+| COURSE-05 | Phase 5 | Pending |
+| STUDENT-01 | Phase 5 | Pending |
+| STUDENT-02 | Phase 5 | Pending |
+| STUDENT-03 | Phase 5 | Pending |
+| STUDENT-04 | Phase 5 | Pending |
+| STUDENT-05 | Phase 5 | Pending |
+| POL-01 | Phase 3 | Pending |
+| POL-02 | Phase 5 | Pending |
+| POL-03 | Phase 1 | Pending |
+| POL-04 | Phase 1 | Pending |
 
 **Coverage:**
-- v1 requirements: 51 total
-- Mapped to phases: 0 (pendente)
-- Unmapped: 51 ⚠️
+- v1 requirements: 54 total
+- Mapped to phases: 54 ✓
+- Unmapped: 0
+
+> Nota: a contagem anterior de "51 total" estava incorreta — a soma real das categorias
+> (IDEN 6, SERV 4, AVAIL 6, BOOK 9, PAY 8, NOTIF 7, COURSE 5, STUDENT 5, POL 4) é 54.
+> Nenhum requisito foi adicionado ou removido; apenas o total foi corrigido.
+
+**Distribuição por fase:**
+
+| Phase | Nome | Requisitos |
+|-------|------|------------|
+| 1 | Fundação e Painel da Profissional | 11 |
+| 2 | Agendamento Self-Service | 12 |
+| 3 | Sinal via Pix e Infraestrutura de Pagamento | 8 |
+| 4 | Confirmação e Lembretes por WhatsApp | 7 |
+| 5 | Cursos e Área da Aluna | 16 |
 
 ---
 *Requirements defined: 2026-09-18*
-*Last updated: 2026-09-18 after initial definition*
+*Last updated: 2026-09-18 after roadmap traceability mapping*
