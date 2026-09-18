@@ -1,0 +1,178 @@
+// AgendamentoCilios — Phase 1 schema
+//
+// Identity model note (consumed by Phase 2 and Phase 5):
+//   `User` is Better Auth's account table. It holds the professional (role="admin")
+//   and, from Phase 5 on, course students (role="user", the plugin default).
+//   `Client` is the booking-lite identity: name + phone, NO password, NO account.
+//   A booking client who later buys a course gets a `User` row linked back via
+//   `Client.userId` — one person, one `Client` row, no duplicate contact record.
+//   Do NOT force account creation to book; that contradicts the product's core value.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Prisma 7 removed `url` from the datasource block. The connection string now
+// lives in prisma.config.ts (for CLI/migrate) and reaches the client through a
+// driver adapter — see server/modules/shared/prisma.ts.
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------------------------------------------------------------------------
+// Better Auth tables (User/Session/Account/Verification)
+// Generated/kept in sync via: npx auth@latest generate
+// `role` is added by the admin plugin; the single professional is role="admin".
+// ---------------------------------------------------------------------------
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  role          String    @default("user")
+  banned        Boolean   @default(false)
+  banReason     String?
+  banExpires    DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  sessions Session[]
+  accounts Account[]
+  client   Client?
+
+  @@map("user")
+}
+
+model Session {
+  id             String   @id @default(cuid())
+  token          String   @unique
+  expiresAt      DateTime
+  ipAddress      String?
+  userAgent      String?
+  impersonatedBy String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id @default(cuid())
+  accountId             String
+  providerId            String
+  accessToken           String?
+  refreshToken          String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  idToken               String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("verification")
+}
+
+// ---------------------------------------------------------------------------
+// Booking-lite identity (IDEN-01/02, written by Phase 2)
+// Created here so the dual-identity bridge exists from the start — retrofitting
+// it after Phase 2 writes real bookings means a data migration.
+// ---------------------------------------------------------------------------
+
+model Client {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String   @unique // E.164; the booking-lite identity key
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Set when this person also becomes a course student (Phase 5).
+  // Nullable and unique: one Client maps to at most one User, and vice versa.
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("client")
+}
+
+// ---------------------------------------------------------------------------
+// Service catalog (SERV-01..04)
+// ---------------------------------------------------------------------------
+
+model Service {
+  id              String   @id @default(cuid())
+  name            String
+  description     String?
+  durationMinutes Int
+  priceCents      Int // integer BRL cents — R$ 50,00 => 5000. Never Decimal/@db.Money.
+  depositCents    Int // SERV-03 — fixed sinal value
+  active          Boolean  @default(true) // SERV-02/04 — never hard-delete a Service
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // PHASE 2 CONTRACT — read this before building Appointment:
+  // Appointment MUST snapshot serviceName / durationMinutes / priceCents /
+  // depositCents onto its own row at booking time. Do NOT FK-read these fields
+  // for historical display. A later price edit must never rewrite past bookings.
+
+  @@map("service")
+}
+
+// ---------------------------------------------------------------------------
+// Availability rules (AVAIL-01..04)
+// Storage split is deliberate — see Phase 1 research, Pattern 6:
+//   WorkingHourRule = recurring civil time, no date, no timezone  -> @db.Time
+//   AvailabilityBlock = one concrete calendar instant              -> @db.Timestamptz
+// Phase 2's slot computation interprets WorkingHourRule in America/Sao_Paulo.
+// ---------------------------------------------------------------------------
+
+model WorkingHourRule {
+  id        String   @id @default(cuid())
+  dayOfWeek Int // 0=Sunday .. 6=Saturday — JS Date.getDay() convention. Document at every read site.
+  startTime DateTime @db.Time // wall-clock, recurs weekly
+  endTime   DateTime @db.Time
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([dayOfWeek, startTime, endTime])
+  @@map("working_hour_rule")
+}
+
+model AvailabilityBlock {
+  id        String   @id @default(cuid())
+  startsAt  DateTime @db.Timestamptz
+  endsAt    DateTime @db.Timestamptz
+  reason    String?
+  createdAt DateTime @default(now())
+
+  @@index([startsAt, endsAt])
+  @@map("availability_block")
+}
+
+model SchedulingSettings {
+  id                 String   @id @default(cuid()) // singleton row — always id = "singleton"
+  bufferMinutes      Int      @default(0) // AVAIL-03
+  minLeadTimeMinutes Int      @default(0) // AVAIL-04 lower bound
+  bookingHorizonDays Int      @default(30) // AVAIL-04 upper bound
+  updatedAt          DateTime @updatedAt
+
+  @@map("scheduling_settings")
+}
