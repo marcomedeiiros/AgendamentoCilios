@@ -31,7 +31,14 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Profissional define seus horários de trabalho por dia da semana, bloqueia datas e períodos específicos, define o intervalo entre atendimentos e define a antecedência mínima e até quando a agenda fica aberta.
   4. Cliente abre o site e vê a lista dos serviços ativos com duração e preço, sem ver os serviços desativados.
   5. Qualquer visitante lê a política de privacidade publicada, que descreve quais dados são coletados, para quê e por quanto tempo — e cada formulário do sistema pede apenas os dados necessários àquela etapa.
-**Plans**: TBD
+**Plans**: 4 plans (3 ondas)
+
+Plans:
+- [ ] 01-01-PLAN.md — Walking Skeleton: scaffold Next.js 16 no raiz, esquema de identidade migrado e login real da profissional em `/admin` com portão de duas camadas (onda 1, IDEN-06)
+- [ ] 01-02-PLAN.md — Catálogo de serviços do painel à vitrine pública, com centavos inteiros, desativação sem perda de registro e validação estrita (onda 2, SERV-01..04, POL-04)
+- [ ] 01-03-PLAN.md — Política de privacidade publicada a partir do que o produto de fato coleta, alcançável de qualquer página pública (onda 2, POL-03)
+- [ ] 01-04-PLAN.md — Disponibilidade: janelas semanais, bloqueios de data e período, intervalo, antecedência mínima e horizonte da agenda (onda 3, AVAIL-01..04, POL-04)
+
 **UI hint**: yes
 
 ### Phase 2: Agendamento Self-Service
@@ -97,7 +104,7 @@ Exception: Phase 5 depende apenas das Fases 1 e 3 e pode executar em paralelo co
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Fundação e Painel da Profissional | 0/TBD | Not started | - |
+| 1. Fundação e Painel da Profissional | 0/4 | Planned | - |
 | 2. Agendamento Self-Service | 0/TBD | Not started | - |
 | 3. Sinal via Pix e Infraestrutura de Pagamento | 0/TBD | Not started | - |
 | 4. Confirmação e Lembretes por WhatsApp | 0/TBD | Not started | - |
