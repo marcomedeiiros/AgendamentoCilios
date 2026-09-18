@@ -68,7 +68,11 @@ A cliente/aluna resolve tudo sozinha pelo link — agendar um atendimento ou com
 | Área de aluna própria, não Hotmart/Kiwify | Mantém a aluna dentro do produto e permite acompanhamento de progresso | — Pending |
 | Lembretes por WhatsApp (não e-mail) | É o canal onde a cliente já está e efetivamente lê | — Pending |
 | Catálogo de serviços com durações distintas | Volume russo, clássico, híbrido e manutenção ocupam tempos diferentes na agenda | — Pending |
-| Gateway de pagamento em aberto | Sem preferência prévia — decisão delegada à fase de pesquisa | — Pending |
+| Gateway: Mercado Pago | Pix a 0,99% sem piso vs. R$1,99 fixos do Asaas; ponto de equilíbrio ~R$201 e o negócio é sinal de ticket baixo e alta frequência | — Pending |
+| WhatsApp: API oficial da Meta (Cloud API) | Provedores não-oficiais são mais baratos, mas o disparo em lote dos lembretes é o gatilho documentado de banimento — e esse é o único canal com as clientes | — Pending |
+| Vídeo dos cursos: Panda Video | Brasileiro, cobrança em BRL, já traz DRM, marca d'água dinâmica e domain lock no plano | — Pending |
+| Monolito único em Next.js, não client/server separados | Server Actions dispensam API REST separada; um deploy só para operador solo. `client/` e `server/` viram diretórios internos do mesmo app, não dois serviços | — Pending |
+| Reembolso graduado em vez de retenção cega do sinal | CDC Art. 49 dá arrependimento de 7 dias em compra à distância e Art. 51 II anula cláusula que elimina reembolso; o sinal segue como dissuasor, mas a política precisa ser graduada e divulgada antes do pagamento | — Pending |
 
 ## Evolution
 
