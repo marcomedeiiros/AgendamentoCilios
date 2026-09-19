@@ -1,0 +1,31 @@
+{
+  // Mantém o explorador focado no que é código-fonte: client/ e server/.
+  // Nada é apagado — basta remover uma linha aqui para voltar a ver a pasta.
+  "files.exclude": {
+    "**/.git": true,
+    "node_modules": true,
+    "dist": true,
+    "prisma": true,
+    "public": true,
+    ".vscode": true,
+    ".planning": true,
+    ".claude": true,
+    "*.config.ts": true,
+    "*.config.mjs": true,
+    "tsconfig*.json": true,
+    "*.tsbuildinfo": true,
+    "package-lock.json": true,
+    "eslint.config.mjs": true
+  },
+  "search.exclude": {
+    "node_modules": true,
+    "dist": true,
+    "package-lock.json": true
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  }
+}

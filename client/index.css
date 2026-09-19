@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Design tokens — Lash&Co Studio
+   Paleta rosé/nude sóbria, contraste verificado para texto (AA).
+   --------------------------------------------------------------- */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+
+  --color-cream: #fdfbf9;
+  --color-sand: #f6efea;
+
+  --color-blush-50: #fbf6f4;
+  --color-blush-100: #f4e9e5;
+  --color-blush-200: #e9d6d0;
+  --color-blush-300: #d8b8b3;
+  --color-blush-400: #c1938f;
+  --color-blush-500: #a9737a;
+  --color-blush-600: #8c5a60;
+  --color-blush-700: #6f464b;
+  --color-blush-800: #523337;
+  --color-blush-900: #332023;
+
+  --color-ink: #241d20;
+  --color-ink-soft: #5a4c51;
+
+  --color-gold: #b08d57;
+
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blush-600);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--color-blush-200);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
