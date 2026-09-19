@@ -38,9 +38,11 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  sessions Session[]
-  accounts Account[]
-  client   Client?
+  sessions    Session[]
+  accounts    Account[]
+  client      Client?
+  orders      Order[]
+  enrollments Enrollment[]
 
   @@map("user")
 }
@@ -175,4 +177,110 @@ model SchedulingSettings {
   updatedAt          DateTime @updatedAt
 
   @@map("scheduling_settings")
+}
+
+// ---------------------------------------------------------------------------
+// Cursos online (venda, acesso e conteúdo)
+//
+// Dinheiro é sempre Int em centavos — nunca Float/Decimal.
+// Order guarda o preço no momento da compra: mudar o preço do curso não pode
+// reescrever o histórico de vendas.
+// ---------------------------------------------------------------------------
+
+model Course {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  subtitle    String?
+  description String
+  priceCents  Int
+  coverImage  String?
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  lessons     Lesson[]
+  orders      Order[]
+  enrollments Enrollment[]
+
+  @@map("course")
+}
+
+model Lesson {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  position    Int
+  // Segundos; preenchido quando o vídeo é enviado.
+  durationSeconds Int?
+
+  // Caminho do arquivo dentro de server/data/videos. Nunca é exposto ao
+  // cliente: o vídeo sai por /api/aulas/:id/video, que confere a matrícula.
+  videoPath     String?
+  videoMimeType String?
+  videoBytes    Int?
+
+  // Aula liberada para quem não comprou, como amostra.
+  gratuita Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([courseId, position])
+  @@map("lesson")
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  status      OrderStatus @default(PENDING)
+  amountCents Int
+  provider    String      @default("mercadopago")
+
+  // Identificadores do Mercado Pago. O paymentId é único para que o webhook
+  // possa ser reprocessado sem duplicar matrícula.
+  providerPreferenceId String? @unique
+  providerPaymentId    String? @unique
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  paidAt    DateTime?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+
+  enrollment Enrollment?
+
+  @@index([userId, status])
+  @@map("order")
+}
+
+model Enrollment {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  orderId String? @unique
+  order   Order?  @relation(fields: [orderId], references: [id])
+
+  // Uma matrícula por pessoa por curso — a compra repetida não duplica acesso.
+  @@unique([userId, courseId])
+  @@map("enrollment")
 }

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Award, CheckCircle2, Clock3, Users } from 'lucide-react';
 import { cursos } from '../data/site';
+import CursosOnline from '../components/CursosOnline';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 const garantias = [
@@ -54,12 +55,14 @@ export default function Cursos() {
         </div>
       </section>
 
-      {/* Cursos */}
+      <CursosOnline />
+
+      {/* Cursos presenciais */}
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="max-w-2xl">
-            <p className="eyebrow text-blush-600">Turmas abertas</p>
-            <h2 className="mt-4 font-display text-4xl text-ink md:text-5xl">Escolha a sua formação</h2>
+            <p className="eyebrow text-blush-600">Presencial</p>
+            <h2 className="mt-4 font-display text-4xl text-ink md:text-5xl">Turmas presenciais</h2>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
               As vagas são limitadas pelo número de bancadas do studio. A matrícula é confirmada
               após a conversa inicial com a equipe.

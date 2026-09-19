@@ -1,20 +1,26 @@
-import "server-only";
-
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { admin } from "better-auth/plugins";
 
 import { prisma } from "../shared/prisma";
 
-// The single professional is the only account with role="admin". Students who
-// sign up in Phase 5 get the plugin's default role="user" there is no code
-// path that promotes a student to admin.
+// A profissional é a única conta com role="admin". Quem se cadastra para
+// comprar curso recebe o role="user" padrão do plugin — não existe caminho de
+// código que promova aluna a admin.
 //
-// adminRoles (role-based) is used instead of adminUserIds (id-based) because
-// the id-based form breaks if the row is ever recreated.
+// adminRoles (por papel) em vez de adminUserIds (por id), porque a forma por id
+// quebra se a linha for recriada.
 export const auth = betterAuth({
   database: prismaAdapter(prisma, { provider: "postgresql" }),
-  emailAndPassword: { enabled: true },
+  secret: process.env.BETTER_AUTH_SECRET,
+  baseURL: process.env.BETTER_AUTH_URL ?? "http://localhost:3000",
+  // O front roda em outra porta no desenvolvimento; sem isso o cookie de
+  // sessão é recusado.
+  trustedOrigins: [process.env.APP_URL ?? "http://localhost:5173"],
+  emailAndPassword: {
+    enabled: true,
+    minPasswordLength: 8,
+  },
   plugins: [admin({ adminRoles: ["admin"] })],
 });
 

@@ -1,5 +1,3 @@
-import "server-only";
-
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
@@ -17,8 +15,8 @@ function createPrismaClient() {
   });
 }
 
-// Next.js dev mode hot-reloads modules, which would otherwise open a new pool
-// on every reload until Postgres refuses connections. Reuse one client.
+// O tsx watch recarrega o módulo a cada alteração, o que abriria um pool novo
+// por reload até o Postgres recusar conexões. Reaproveita um único client.
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { UserRound } from 'lucide-react';
 import Logo from './Logo';
+import { useSession } from '../lib/auth';
 
 const links = [
   { to: '/#servicos', label: 'Serviços' },
@@ -15,6 +17,7 @@ export default function SiteHeader() {
   const [aberto, setAberto] = useState(false);
   const [rolou, setRolou] = useState(false);
   const { pathname } = useLocation();
+  const { data: sessao } = useSession();
 
   useEffect(() => setAberto(false), [pathname]);
 
@@ -52,6 +55,13 @@ export default function SiteHeader() {
             </NavLink>
           ))}
           <Link
+            to={sessao?.user ? '/minha-conta' : '/entrar'}
+            className="inline-flex items-center gap-2 text-sm font-medium text-ink-soft transition-colors hover:text-blush-600"
+          >
+            <UserRound className="h-4 w-4" aria-hidden="true" />
+            {sessao?.user ? 'Minha conta' : 'Entrar'}
+          </Link>
+          <Link
             to="/agendamento"
             className="rounded-full bg-blush-600 px-6 py-2.5 text-sm font-semibold text-cream shadow-sm transition-colors hover:bg-blush-700"
           >
@@ -86,6 +96,12 @@ export default function SiteHeader() {
               {link.label}
             </NavLink>
           ))}
+          <Link
+            to={sessao?.user ? '/minha-conta' : '/entrar'}
+            className="block border-b border-blush-100/70 py-4 text-base font-medium text-ink"
+          >
+            {sessao?.user ? 'Minha conta' : 'Entrar'}
+          </Link>
           <Link
             to="/agendamento"
             className="mt-5 block rounded-full bg-blush-600 px-6 py-3 text-center text-sm font-semibold text-cream"
