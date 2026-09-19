@@ -6,11 +6,11 @@ const unsplash = (id: string, w: number) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
 
 export const site = {
-  name: 'Lash&Co Studio',
+  name: 'Alicia Lash Designer',
   tagline: 'Design de olhar e formação profissional',
   phone: '(11) 4000-0000',
   whatsapp: '5511940000000',
-  email: 'contato@lashco.com.br',
+  email: 'contato@alicialashdesigner.com.br',
   address: 'Piuma - ES',
   hours: 'Terça a sábado, das 9h às 19h',
   instagram: 'https://www.instagram.com/alicialashdesigner__?stkn=MXVwbW1uMGNvZGF5',

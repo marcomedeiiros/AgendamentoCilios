@@ -1,6 +1,6 @@
 # AgendamentoCilios
 
-Site do Lash&Co Studio: apresentação dos serviços, cursos, pedido de agendamento
+Site da Alicia Lash Designer: apresentação dos serviços, cursos, pedido de agendamento
 e depoimentos enviados pelas clientes.
 
 - `client/` — front-end (React + Vite + Tailwind)

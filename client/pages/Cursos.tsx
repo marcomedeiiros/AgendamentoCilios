@@ -11,7 +11,7 @@ const garantias = [
 
 export default function Cursos() {
   usePageMeta(
-    'Formação profissional | Lash&Co Studio',
+    'Formação profissional | Alicia Lash Designer',
     'Cursos certificados de extensão de cílios: formação completa e masterclass de volume russo, com turmas reduzidas.',
   );
 

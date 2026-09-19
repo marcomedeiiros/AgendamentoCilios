@@ -38,7 +38,7 @@ export default function SiteHeader() {
         Ir para o conteúdo
       </a>
 
-      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 sm:px-8 md:h-28">
         <Logo />
 
         <nav className="hidden items-center gap-9 md:flex" aria-label="Navegação principal">

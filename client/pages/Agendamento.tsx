@@ -29,8 +29,8 @@ const hoje = new Date().toISOString().slice(0, 10);
 
 export default function Agendamento() {
   usePageMeta(
-    'Agendar horário | Lash&Co Studio',
-    'Solicite seu horário para extensão de cílios, volume russo ou lash lifting no Lash&Co Studio.',
+    'Agendar horário | Alicia Lash Designer',
+    'Solicite seu horário para extensão de cílios, volume russo ou lash lifting com a Alicia Lash Designer.',
   );
 
   const [dados, setDados] = useState<Formulario>(vazio);

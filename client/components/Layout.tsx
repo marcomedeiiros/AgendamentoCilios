@@ -24,7 +24,7 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col bg-cream">
       <SiteHeader />
-      <main id="conteudo" className="flex-1 pt-20">
+      <main id="conteudo" className="flex-1 pt-20 md:pt-28">
         <Outlet />
       </main>
       <SiteFooter />

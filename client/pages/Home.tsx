@@ -5,7 +5,7 @@ import Depoimentos from '../components/Depoimentos';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 const numeros = [
-  { valor: '7 anos', rotulo: 'de studio em São Paulo' },
+  { valor: '7 anos', rotulo: 'de studio em Piúma' },
   { valor: '+2.400', rotulo: 'atendimentos realizados' },
   { valor: '+180', rotulo: 'profissionais formadas' },
   { valor: '4,9/5', rotulo: 'média de avaliação' },
@@ -34,8 +34,8 @@ const diferenciais = [
 
 export default function Home() {
   usePageMeta(
-    'Lash&Co Studio | Extensão de cílios e formação profissional',
-    'Studio especializado em extensão de cílios, volume russo e lash lifting em São Paulo. Agende sua avaliação.',
+    'Alicia Lash Designer | Extensão de cílios e formação profissional',
+    'Studio especializado em extensão de cílios, volume russo e lash lifting em Piúma, no Espírito Santo. Agende sua avaliação.',
   );
 
   return (
