@@ -18,9 +18,13 @@ import { rotasConteudo } from "./modules/conteudo/rotas";
 const app = express();
 const port = process.env.PORT || 3000;
 const origemApp = process.env.APP_URL ?? "http://localhost:5173";
+const emDesenvolvimento = process.env.NODE_ENV !== "production";
 
 // credentials: o cookie de sessão precisa atravessar as duas portas no dev.
-app.use(cors({ origin: origemApp, credentials: true }));
+// Em desenvolvimento o navegador pode chegar por localhost, 127.0.0.1 ou IP da
+// rede; refletir a origem evita bloqueio bobo. Em produção, só o APP_URL —
+// quem de fato valida a origem no login é o Better Auth.
+app.use(cors({ origin: emDesenvolvimento ? true : origemApp, credentials: true }));
 
 // O handler do Better Auth lê o corpo por conta própria e precisa vir antes do
 // express.json(), senão recebe o stream já consumido.
