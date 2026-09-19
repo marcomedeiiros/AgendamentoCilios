@@ -82,10 +82,13 @@ rotasAdmin.put("/conteudo/:chave", async (req, res) => {
     return;
   }
 
+  // SQLite não tem coluna JSON: guardamos o texto serializado.
+  const serializado = JSON.stringify(valor);
+
   await prisma.siteContent.upsert({
     where: { key: chave },
-    create: { key: chave, value: valor },
-    update: { value: valor },
+    create: { key: chave, value: serializado },
+    update: { value: serializado },
   });
 
   res.json({ ok: true });
@@ -164,14 +167,20 @@ rotasAdmin.delete("/servicos/:id", async (req, res) => {
 // ---------------------------------------------------------------------------
 
 rotasAdmin.get("/cursos", async (_req, res) => {
+  const cursos = await prisma.course.findMany({
+    orderBy: { createdAt: "asc" },
+    include: {
+      lessons: { orderBy: { position: "asc" } },
+      _count: { select: { enrollments: true } },
+    },
+  });
+
+  // O painel trabalha com lista; no banco é texto, uma linha por item.
   res.json(
-    await prisma.course.findMany({
-      orderBy: { createdAt: "asc" },
-      include: {
-        lessons: { orderBy: { position: "asc" } },
-        _count: { select: { enrollments: true } },
-      },
-    }),
+    cursos.map((curso) => ({
+      ...curso,
+      includes: curso.includes.split("\n").filter(Boolean),
+    })),
   );
 });
 
@@ -196,9 +205,13 @@ function dadosCurso(corpo: Record<string, unknown>) {
       level: texto(corpo.level) || null,
       durationHours: inteiro(corpo.durationHours),
       forWho: texto(corpo.forWho) || null,
+      // SQLite não tem array: guardamos um item por linha.
       includes: Array.isArray(corpo.includes)
-        ? (corpo.includes as unknown[]).map((i) => texto(i)).filter(Boolean)
-        : [],
+        ? (corpo.includes as unknown[])
+            .map((i) => texto(i))
+            .filter(Boolean)
+            .join("\n")
+        : "",
       published: corpo.published === true,
     },
   };

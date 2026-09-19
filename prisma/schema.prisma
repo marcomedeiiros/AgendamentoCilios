@@ -16,7 +16,7 @@ generator client {
 // lives in prisma.config.ts (for CLI/migrate) and reaches the client through a
 // driver adapter — see server/modules/shared/prisma.ts.
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
 }
 
 // ---------------------------------------------------------------------------
@@ -147,16 +147,16 @@ model Service {
 // ---------------------------------------------------------------------------
 // Availability rules (AVAIL-01..04)
 // Storage split is deliberate — see Phase 1 research, Pattern 6:
-//   WorkingHourRule = recurring civil time, no date, no timezone  -> @db.Time
-//   AvailabilityBlock = one concrete calendar instant              -> @db.Timestamptz
+//   WorkingHourRule = recurring civil time, no date, no timezone  ->
+//   AvailabilityBlock = one concrete calendar instant              ->
 // Phase 2's slot computation interprets WorkingHourRule in America/Sao_Paulo.
 // ---------------------------------------------------------------------------
 
 model WorkingHourRule {
   id        String   @id @default(cuid())
   dayOfWeek Int // 0=Sunday .. 6=Saturday — JS Date.getDay() convention. Document at every read site.
-  startTime DateTime @db.Time // wall-clock, recurs weekly
-  endTime   DateTime @db.Time
+  startTime DateTime // wall-clock, recurs weekly
+  endTime   DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -166,8 +166,8 @@ model WorkingHourRule {
 
 model AvailabilityBlock {
   id        String   @id @default(cuid())
-  startsAt  DateTime @db.Timestamptz
-  endsAt    DateTime @db.Timestamptz
+  startsAt  DateTime
+  endsAt    DateTime
   reason    String?
   createdAt DateTime @default(now())
 
@@ -207,7 +207,8 @@ model Course {
   level         String? // "Iniciante", "Avançado"...
   durationHours Int?
   forWho        String?
-  includes      String[] // o que a aluna recebe, um item por linha
+  // Um item por linha; o servidor converte para lista na borda da API.
+  includes      String  @default("")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -245,16 +246,10 @@ model Lesson {
   @@map("lesson")
 }
 
-enum OrderStatus {
-  PENDING
-  PAID
-  FAILED
-  REFUNDED
-}
-
 model Order {
   id          String      @id @default(cuid())
-  status      OrderStatus @default(PENDING)
+  // PENDING | PAID | FAILED | REFUNDED (SQLite não tem enum)
+  status      String      @default("PENDING")
   amountCents Int
   provider    String      @default("mercadopago")
 
@@ -304,7 +299,8 @@ model Enrollment {
 
 model SiteContent {
   key       String   @id
-  value     Json
+  // JSON serializado; o servidor faz parse/stringify na borda da API.
+  value     String
   updatedAt DateTime @updatedAt
 
   @@map("site_content")

@@ -12,7 +12,18 @@ export const rotasConteudo = Router();
  */
 rotasConteudo.get("/", async (_req, res) => {
   const blocos = await prisma.siteContent.findMany();
-  res.json(Object.fromEntries(blocos.map((b) => [b.key, b.value])));
+
+  // O valor é guardado como texto: SQLite não tem coluna JSON.
+  const conteudo: Record<string, unknown> = {};
+  for (const bloco of blocos) {
+    try {
+      conteudo[bloco.key] = JSON.parse(bloco.value);
+    } catch {
+      // bloco corrompido: ignora em vez de derrubar a página inteira
+    }
+  }
+
+  res.json(conteudo);
 });
 
 /** Serviços ativos, na ordem definida no painel. */

@@ -25,7 +25,7 @@ const cursos = [
       "Apostila digital para acompanhar",
       "Certificado com carga horária",
       "Suporte por 90 dias para tirar dúvidas",
-    ],
+    ].join("\n"),
     aulas: [
       { title: "Boas-vindas e materiais", gratuita: true },
       { title: "Anatomia do fio e saúde do olhar", gratuita: false },
@@ -53,7 +53,7 @@ const cursos = [
       "Acesso vitalício às aulas gravadas",
       "Protocolo de retenção do studio",
       "Certificado com carga horária",
-    ],
+    ].join("\n"),
     aulas: [
       { title: "O que muda no volume russo", gratuita: true },
       { title: "Montagem de leques passo a passo", gratuita: false },

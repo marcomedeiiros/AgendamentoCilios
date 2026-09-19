@@ -5,6 +5,14 @@ import { exigirLogin } from "../identity/sessao";
 
 export const rotasCursos = Router();
 
+/** includes é guardado como texto (uma linha por item) porque SQLite não tem array. */
+function linhas(texto: string) {
+  return texto
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+}
+
 /** Catálogo público: só o que está publicado, sem caminho de vídeo. */
 rotasCursos.get("/", async (_req, res) => {
   const cursos = await prisma.course.findMany({
@@ -78,7 +86,7 @@ rotasCursos.get("/:slug", async (req, res) => {
     level: curso.level,
     durationHours: curso.durationHours,
     forWho: curso.forWho,
-    includes: curso.includes,
+    includes: linhas(curso.includes),
     matriculada,
     aulas: curso.lessons.map((aula) => ({
       id: aula.id,
