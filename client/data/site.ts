@@ -11,9 +11,9 @@ export const site = {
   phone: '(11) 4000-0000',
   whatsapp: '5511940000000',
   email: 'contato@lashco.com.br',
-  address: 'Av. Paulista, 1000 - Bela Vista, São Paulo/SP',
+  address: 'Piuma - ES',
   hours: 'Terça a sábado, das 9h às 19h',
-  instagram: 'https://instagram.com/lashco.studio',
+  instagram: 'https://www.instagram.com/alicialashdesigner__?stkn=MXVwbW1uMGNvZGF5',
 } as const;
 
 export type Servico = {

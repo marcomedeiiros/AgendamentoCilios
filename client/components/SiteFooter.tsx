@@ -20,7 +20,7 @@ export default function SiteFooter() {
             className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-blush-200 transition-colors hover:text-cream"
           >
             <AtSign className="h-4 w-4" aria-hidden="true" />
-            @lashco.studio
+            @alicialashdesigner__
           </a>
         </div>
 
