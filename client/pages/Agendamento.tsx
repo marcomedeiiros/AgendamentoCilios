@@ -149,11 +149,11 @@ export default function Agendamento() {
                       </option>
                       {servicos.map((s) => (
                         <option key={s.slug} value={s.titulo}>
-                          {s.titulo} — {s.preco}
+                          {s.titulo} - {s.preco}
                         </option>
                       ))}
                       <option value="Manutenção">Manutenção de extensão existente</option>
-                      <option value="Avaliação">Ainda não sei — quero uma avaliação</option>
+                      <option value="Avaliação">Ainda não sei quero uma avaliação</option>
                     </select>
                   </div>
 

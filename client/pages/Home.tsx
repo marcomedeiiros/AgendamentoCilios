@@ -21,7 +21,7 @@ const diferenciais = [
     icone: Sparkles,
     titulo: 'Mapeamento personalizado',
     texto:
-      'O desenho é definido a partir do formato dos olhos, da saúde do fio natural e da sua rotina — não de um modelo pronto.',
+      'O desenho é definido a partir do formato dos olhos, da saúde do fio natural e da sua rotina não de um modelo pronto.',
   },
   {
     icone: RefreshCw,

@@ -3,7 +3,7 @@ import "server-only";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
-// Prisma 7 requires a driver adapter — the connection string no longer flows
+// Prisma 7 requires a driver adapter the connection string no longer flows
 // from schema.prisma's datasource block into the client.
 function createPrismaClient() {
   const connectionString = process.env.DATABASE_URL;
