@@ -78,7 +78,7 @@ export default function Home() {
             <div className="overflow-hidden rounded-[2rem] border border-blush-100 bg-sand shadow-xl shadow-blush-200/40">
               <img
                 src={fotos.hero}
-                alt="Close-up de um olhar com extensão de cílios aplicada"
+                alt="Cliente do studio com extensão de cílios aplicada"
                 width={1000}
                 height={1250}
                 className="h-[420px] w-full object-cover md:h-[560px]"
@@ -175,7 +175,7 @@ export default function Home() {
           <div className="overflow-hidden rounded-[2rem] border border-blush-100">
             <img
               src={fotos.studio}
-              alt="Ambiente do studio preparado para atendimento"
+              alt="Alicia, responsável pelo studio"
               width={1000}
               height={800}
               loading="lazy"

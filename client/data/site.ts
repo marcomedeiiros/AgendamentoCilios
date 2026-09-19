@@ -19,8 +19,8 @@ export type Contato = {
 export const site: Contato = {
   name: 'Alicia Lash Designer',
   tagline: 'Design de olhar e formação profissional',
-  phone: '(11) 4000-0000',
-  whatsapp: '5511940000000',
+  phone: '(28) 99925-5874',
+  whatsapp: '5528999255874',
   email: 'contato@alicialashdesigner.com.br',
   address: 'Piuma - ES',
   hours: 'Terça a sábado, das 9h às 19h',
@@ -47,8 +47,8 @@ export const servicos: Servico[] = [
     duracao: '2h',
     manutencao: 'a cada 21 dias',
     preco: 'R$ 150',
-    imagem: unsplash('photo-1512290923902-8a9f81dc236c', 700),
-    imagemAlt: 'Aplicação de extensão sendo feita fio a fio em uma cliente',
+    imagem: '/fotos/fio-a-fio.jpg',
+    imagemAlt: 'Olhar com extensão fio a fio feita no studio',
   },
   {
     slug: 'volume-russo',
@@ -58,8 +58,8 @@ export const servicos: Servico[] = [
     duracao: '2h30',
     manutencao: 'a cada 21 dias',
     preco: 'R$ 200',
-    imagem: unsplash('photo-1552693673-1bf958298935', 700),
-    imagemAlt: 'Cliente deitada com os olhos fechados durante a aplicação de volume',
+    imagem: '/fotos/volume-russo.jpg',
+    imagemAlt: 'Olhar com volume russo feito no studio',
   },
   {
     slug: 'lash-lifting',
@@ -69,8 +69,8 @@ export const servicos: Servico[] = [
     duracao: '1h',
     manutencao: 'até 8 semanas',
     preco: 'R$ 120',
-    imagem: unsplash('photo-1531895861208-8504b98fe814', 700),
-    imagemAlt: 'Aplicação de sérum de nutrição nos fios naturais',
+    imagem: '/fotos/lash-lifting.jpg',
+    imagemAlt: 'Olhar após lash lifting feito no studio',
   },
 ];
 
@@ -116,9 +116,9 @@ export const cursos = [
 export type FotosSite = { hero: string; studio: string; agendamento: string };
 
 export const fotos: FotosSite = {
-  hero: unsplash('photo-1487412947147-5cebf100ffc2', 1000),
-  studio: unsplash('photo-1633681926022-84c23e8cb2d6', 1000),
-  agendamento: unsplash('photo-1560066984-138dadb4c035', 1000),
+  hero: '/fotos/hero-olhar.jpg',
+  studio: '/fotos/studio-alicia.jpg',
+  agendamento: '/fotos/agendamento.jpg',
 };
 
 export type Depoimento = {

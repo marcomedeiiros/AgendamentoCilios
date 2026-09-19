@@ -1,7 +1,7 @@
 # Ver https://help.github.com/articles/ignoring-files/
 
 # ---------------------------------------------------------------------------
-# SEGREDOS — nada daqui pode chegar ao GitHub
+# SEGREDOS nada daqui pode chegar ao GitHub
 # ---------------------------------------------------------------------------
 
 # Senhas do banco, chave de sessão e token do Mercado Pago vivem aqui.
@@ -27,7 +27,7 @@ id_rsa*
 .netrc
 
 # ---------------------------------------------------------------------------
-# DADOS — contas das clientes, compras, fotos e vídeos
+# DADOS contas das clientes, compras, fotos e vídeos
 # ---------------------------------------------------------------------------
 
 # Banco SQLite (contas, senhas com hash, pedidos, matrículas).
@@ -49,7 +49,7 @@ backup/
 backups/
 
 # ---------------------------------------------------------------------------
-# GERADOS — reconstruídos por npm install / npm run build
+# GERADOS reconstruídos por npm install / npm run build
 # ---------------------------------------------------------------------------
 
 /node_modules
@@ -85,7 +85,7 @@ yarn-error.log*
 .idea/
 
 # ---------------------------------------------------------------------------
-# EXCEÇÕES — precisam ir para o repositório
+# EXCEÇÕES precisam ir para o repositório
 # ---------------------------------------------------------------------------
 
 # As migrações descrevem o formato das tabelas; sem elas ninguém consegue
