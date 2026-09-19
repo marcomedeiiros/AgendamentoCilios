@@ -47,7 +47,7 @@ export const servicos: Servico[] = [
     manutencao: 'a cada 21 dias',
     preco: 'R$ 150',
     imagem: '/fotos/fio-a-fio.jpg',
-    imagemAlt: 'Olhar com extensão fio a fio feita no studio',
+    imagemAlt: 'Resultado natural de extensão fio a fio feita no studio',
   },
   {
     slug: 'volume-russo',
