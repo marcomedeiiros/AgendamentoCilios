@@ -1,5 +1,5 @@
 // As fotos do site são do próprio studio e ficam em public/fotos/, referenciadas
-// como '/fotos/nome.jpg'. Para trocar, o caminho normal é o painel em /admin —
+// como '/fotos/nome.jpg'. Para trocar, o caminho normal é o painel em /admin 
 // mexer aqui só muda o padrão de quando o banco ainda não tem nada salvo.
 // O `alt` descreve a imagem para leitores de tela e para quando a foto não
 // carrega: reescreva junto com a troca.

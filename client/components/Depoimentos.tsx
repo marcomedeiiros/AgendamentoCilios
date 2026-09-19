@@ -123,7 +123,7 @@ export default function Depoimentos() {
           // convida quem já foi atendida a escrever o primeiro.
           <p className="mt-12 max-w-xl leading-relaxed text-ink-soft">
             Ainda não há depoimentos publicados. Se você já foi atendida aqui, seu relato ajuda
-            quem está decidindo — e aparece nesta página depois da nossa conferência.
+            quem está decidindo e aparece nesta página depois da nossa conferência.
           </p>
         ) : (
           <div className="mt-12 grid gap-6 md:grid-cols-3">
