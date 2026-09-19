@@ -13,8 +13,8 @@ export default function Logo({ tone = 'dark' }: Props) {
         <img
           src="/logo.png"
           alt={site.name}
-          width={360}
-          height={296}
+          width={298}
+          height={245}
           className="h-14 w-auto md:h-20"
         />
       ) : (
