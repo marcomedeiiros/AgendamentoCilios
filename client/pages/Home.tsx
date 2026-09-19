@@ -149,31 +149,44 @@ export default function Home() {
             {servicos.map((s) => (
               <article
                 key={s.slug}
-                className="flex h-full flex-col rounded-[1.75rem] border border-blush-100 bg-cream p-8 transition-shadow duration-300 hover:shadow-xl hover:shadow-blush-100"
+                className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-blush-100 bg-cream transition-shadow duration-300 hover:shadow-xl hover:shadow-blush-100"
               >
-                <h3 className="font-display text-2xl text-ink">{s.titulo}</h3>
-                <p className="mt-4 flex-grow leading-relaxed text-ink-soft">{s.descricao}</p>
+                <div className="h-48 overflow-hidden bg-sand">
+                  <img
+                    src={s.imagem}
+                    alt={s.imagemAlt}
+                    width={700}
+                    height={420}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
 
-                <ul className="mt-6 space-y-2 text-sm text-ink-soft">
-                  <li className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-blush-400" aria-hidden="true" />
-                    Duração aproximada de {s.duracao}
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <RefreshCw className="h-4 w-4 text-blush-400" aria-hidden="true" />
-                    Manutenção {s.manutencao}
-                  </li>
-                </ul>
+                <div className="flex flex-grow flex-col p-8">
+                  <h3 className="font-display text-2xl text-ink">{s.titulo}</h3>
+                  <p className="mt-4 flex-grow leading-relaxed text-ink-soft">{s.descricao}</p>
 
-                <div className="mt-8 flex items-center justify-between border-t border-blush-100 pt-6">
-                  <span className="font-display text-3xl text-blush-700">{s.preco}</span>
-                  <Link
-                    to="/agendamento"
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-blush-600 transition-colors hover:text-blush-700"
-                  >
-                    Agendar
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  <ul className="mt-6 space-y-2 text-sm text-ink-soft">
+                    <li className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-blush-400" aria-hidden="true" />
+                      Duração aproximada de {s.duracao}
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <RefreshCw className="h-4 w-4 text-blush-400" aria-hidden="true" />
+                      Manutenção {s.manutencao}
+                    </li>
+                  </ul>
+
+                  <div className="mt-8 flex items-center justify-between border-t border-blush-100 pt-6">
+                    <span className="font-display text-3xl text-blush-700">{s.preco}</span>
+                    <Link
+                      to="/agendamento"
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-blush-600 transition-colors hover:text-blush-700"
+                    >
+                      Agendar
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}

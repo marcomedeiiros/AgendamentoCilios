@@ -1,3 +1,10 @@
+// Fotos do site. São imagens de banco (placeholder) — troque cada `src` pela
+// foto real do studio. Se os arquivos forem locais, coloque-os em public/fotos/
+// e use o caminho '/fotos/nome.jpg'. O `alt` descreve a imagem para leitores
+// de tela e para quando a foto não carrega: reescreva junto com a troca.
+const unsplash = (id: string, w: number) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
+
 export const site = {
   name: 'Lash&Co Studio',
   tagline: 'Design de olhar e formação profissional',
@@ -16,6 +23,8 @@ export type Servico = {
   duracao: string;
   manutencao: string;
   preco: string;
+  imagem: string;
+  imagemAlt: string;
 };
 
 export const servicos: Servico[] = [
@@ -27,6 +36,8 @@ export const servicos: Servico[] = [
     duracao: '2h',
     manutencao: 'a cada 21 dias',
     preco: 'R$ 150',
+    imagem: unsplash('photo-1512290923902-8a9f81dc236c', 700),
+    imagemAlt: 'Aplicação de extensão sendo feita fio a fio em uma cliente',
   },
   {
     slug: 'volume-russo',
@@ -36,6 +47,8 @@ export const servicos: Servico[] = [
     duracao: '2h30',
     manutencao: 'a cada 21 dias',
     preco: 'R$ 200',
+    imagem: unsplash('photo-1552693673-1bf958298935', 700),
+    imagemAlt: 'Cliente deitada com os olhos fechados durante a aplicação de volume',
   },
   {
     slug: 'lash-lifting',
@@ -45,6 +58,8 @@ export const servicos: Servico[] = [
     duracao: '1h',
     manutencao: 'até 8 semanas',
     preco: 'R$ 120',
+    imagem: unsplash('photo-1531895861208-8504b98fe814', 700),
+    imagemAlt: 'Aplicação de sérum de nutrição nos fios naturais',
   },
 ];
 
@@ -88,13 +103,6 @@ export const cursos = [
     ],
   },
 ] as const;
-
-// Fotos do site. São imagens de banco (placeholder) — troque cada `src` pela
-// foto real do studio. Se os arquivos forem locais, coloque-os em public/fotos/
-// e use o caminho '/fotos/nome.jpg'. O `alt` descreve a imagem para leitores
-// de tela e para quando a foto não carrega: reescreva junto com a troca.
-const unsplash = (id: string, w: number) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
 
 export const fotos = {
   hero: unsplash('photo-1487412947147-5cebf100ffc2', 1000),
