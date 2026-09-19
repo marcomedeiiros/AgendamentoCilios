@@ -128,31 +128,9 @@ export type Depoimento = {
   foto?: string | null;
 };
 
-// Depoimentos fixos do studio. Os enviados pelas clientes chegam da API
-// (/api/depoimentos) e aparecem junto destes depois de aprovados.
-export const depoimentosFixos: Depoimento[] = [
-  {
-    nome: 'Marina R.',
-    servico: 'Volume russo',
-    nota: 5,
-    texto:
-      'Resultado natural e simétrico, exatamente como foi combinado na avaliação. A retenção passou de quatro semanas.',
-  },
-  {
-    nome: 'Camila T.',
-    servico: 'Extensão fio a fio',
-    nota: 5,
-    texto:
-      'O atendimento é pontual e o ambiente, impecável. Explicaram todos os cuidados antes e depois do procedimento.',
-  },
-  {
-    nome: 'Juliana P.',
-    servico: 'Curso / formação',
-    nota: 5,
-    texto:
-      'Fiz a formação completa e saí atendendo com segurança. O suporte depois do curso fez toda a diferença.',
-  },
-];
+// Sem depoimentos escritos pelo site: os que aparecem são os enviados pelas
+// próprias clientes (/api/depoimentos) depois de aprovados no painel.
+export const depoimentosFixos: Depoimento[] = [];
 
 /** Opções oferecidas no formulário precisam bater com a lista do servidor. */
 export const servicosDepoimento = [

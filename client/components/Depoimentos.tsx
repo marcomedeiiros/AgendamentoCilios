@@ -74,7 +74,7 @@ export default function Depoimentos() {
           <div className="max-w-2xl">
             <p className="eyebrow text-blush-600">Depoimentos</p>
             <h2 className="mt-4 font-display text-4xl text-ink md:text-5xl">
-              O que dizem as clientes e alunas
+              O que dizem as clientes
             </h2>
           </div>
 
@@ -118,11 +118,20 @@ export default function Depoimentos() {
           />
         )}
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {lista.map((d) => (
-            <Cartao key={`${d.nome}-${d.texto.slice(0, 24)}`} depoimento={d} />
-          ))}
-        </div>
+        {lista.length === 0 ? (
+          // O studio é novo: em vez de encher a seção com texto inventado, ela
+          // convida quem já foi atendida a escrever o primeiro.
+          <p className="mt-12 max-w-xl leading-relaxed text-ink-soft">
+            Ainda não há depoimentos publicados. Se você já foi atendida aqui, seu relato ajuda
+            quem está decidindo — e aparece nesta página depois da nossa conferência.
+          </p>
+        ) : (
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {lista.map((d) => (
+              <Cartao key={`${d.nome}-${d.texto.slice(0, 24)}`} depoimento={d} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

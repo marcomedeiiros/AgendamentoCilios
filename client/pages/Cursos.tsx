@@ -28,7 +28,7 @@ export default function Cursos() {
             </h1>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-soft">
               Nossos cursos vão além da aplicação: biossegurança, atendimento, precificação e
-              retenção de clientes. Formamos profissionais prontas para atender com autonomia.
+              retenção de clientes. O conteúdo é montado para você sair atendendo com segurança.
             </p>
 
             <ul className="mt-10 space-y-3">

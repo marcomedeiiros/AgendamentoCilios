@@ -5,10 +5,10 @@ import type { Contato, FotosSite, Servico } from '../data/site';
 type Numero = { valor: string; rotulo: string };
 
 const numerosPadrao: Numero[] = [
-  { valor: '7 anos', rotulo: 'de studio em Piúma' },
-  { valor: '+2.400', rotulo: 'atendimentos realizados' },
-  { valor: '+180', rotulo: 'profissionais formadas' },
-  { valor: '4,9/5', rotulo: 'média de avaliação' },
+  { valor: 'Hora marcada', rotulo: 'uma cliente por vez, sem fila' },
+  { valor: 'Avaliação', rotulo: 'sem custo, antes do procedimento' },
+  { valor: 'Descartáveis', rotulo: 'material individual a cada sessão' },
+  { valor: '7 dias', rotulo: 'retorno para ajuste, sem custo' },
 ];
 
 type ServicoApi = {

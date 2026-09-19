@@ -12,8 +12,8 @@ export default function SiteFooter() {
         <div>
           <Logo tone="light" />
           <p className="mt-5 max-w-xs leading-relaxed text-blush-200/80">
-            Studio especializado em design de olhar, com protocolo próprio de higiene e formação
-            para novas profissionais desde 2018.
+            Studio de extensão de cílios em Piúma, ES. Atendimento individual, com
+            hora marcada e material descartável a cada sessão.
           </p>
           <a
             href={site.instagram}

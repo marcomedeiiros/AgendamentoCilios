@@ -42,7 +42,7 @@ export default function Home() {
 
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 pb-20 pt-14 sm:px-8 md:grid-cols-2 md:pb-28 md:pt-20">
           <div>
-            <p className="eyebrow text-blush-600">Design de olhar desde 2018</p>
+            <p className="eyebrow text-blush-600">Extensão de cílios em Piúma, ES</p>
             <h1 className="mt-5 font-display text-5xl leading-[1.05] text-ink md:text-6xl lg:text-7xl">
               Um olhar bem desenhado <em className="not-italic text-blush-600">começa na avaliação</em>.
             </h1>
@@ -88,8 +88,8 @@ export default function Home() {
             <div className="absolute -left-3 bottom-8 flex items-center gap-3 rounded-2xl border border-blush-100 bg-cream px-5 py-4 shadow-lg shadow-blush-200/50 md:-left-8">
               <Star className="h-6 w-6 fill-gold text-gold" aria-hidden="true" />
               <div>
-                <p className="font-semibold text-ink">4,9 de 5</p>
-                <p className="text-xs text-ink-soft">312 avaliações de clientes</p>
+                <p className="font-semibold text-ink">Avaliação sem custo</p>
+                <p className="text-xs text-ink-soft">antes de todo procedimento</p>
               </div>
             </div>
           </div>
