@@ -8,8 +8,6 @@
     "prisma": true,
     "public": true,
     ".vscode": true,
-    ".planning": true,
-    ".claude": true,
     "*.config.ts": true,
     "*.config.mjs": true,
     "tsconfig*.json": true,

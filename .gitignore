@@ -92,3 +92,6 @@ yarn-error.log*
 # recriar o banco. Nenhum dado real mora aqui.
 !prisma/migrations/
 !prisma/migrations/**
+
+# ferramentas de IA
+.claude/
