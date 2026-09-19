@@ -8,7 +8,7 @@ type Props = {
 
 export default function Logo({ tone = 'dark' }: Props) {
   return (
-    <Link to="/" aria-label={`${site.name} — página inicial`} className="inline-flex items-center">
+    <Link to="/" aria-label={`${site.name} página inicial`} className="inline-flex items-center">
       {tone === 'dark' ? (
         <img
           src="/logo.png"

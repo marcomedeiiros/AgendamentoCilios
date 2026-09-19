@@ -31,7 +31,7 @@ rotasCursos.get("/", async (_req, res) => {
 
 /**
  * Detalhe do curso. A lista de aulas vem sempre (é vitrine), mas só quem tem
- * matrícula recebe `liberada: true` — o vídeo em si depende de outra checagem,
+ * matrícula recebe `liberada: true`  vídeo em si depende de outra checagem,
  * feita na rota de streaming.
  */
 rotasCursos.get("/:slug", async (req, res) => {

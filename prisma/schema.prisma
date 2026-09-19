@@ -121,12 +121,18 @@ model Client {
 
 model Service {
   id              String   @id @default(cuid())
+  slug            String   @unique
   name            String
   description     String?
   durationMinutes Int
   priceCents      Int // integer BRL cents — R$ 50,00 => 5000. Never Decimal/@db.Money.
   depositCents    Int // SERV-03 — fixed sinal value
   active          Boolean  @default(true) // SERV-02/04 — never hard-delete a Service
+
+  // Campos de vitrine, editáveis pelo painel.
+  maintenance String? // "a cada 21 dias"
+  imageUrl    String?
+  position    Int     @default(0)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -289,4 +295,17 @@ model Enrollment {
   // Uma matrícula por pessoa por curso — a compra repetida não duplica acesso.
   @@unique([userId, courseId])
   @@map("enrollment")
+}
+
+// ---------------------------------------------------------------------------
+// Conteúdo editável do site (textos, contato e fotos).
+// Uma linha por bloco; o valor é JSON para o painel poder crescer sem migração.
+// ---------------------------------------------------------------------------
+
+model SiteContent {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+
+  @@map("site_content")
 }

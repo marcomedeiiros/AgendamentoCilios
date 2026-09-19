@@ -8,7 +8,7 @@ import { catalogoExemplo } from '../data/cursosExemplo';
  * Catálogo de cursos online.
  *
  * Quando a API não responde (banco ainda não configurado) mostra o conteúdo de
- * exemplo em modo prévia, para a página nunca ficar vazia — mas sem oferecer
+ * exemplo em modo prévia, para a página nunca ficar vazia mas sem oferecer
  * compra, que aí não funcionaria mesmo.
  */
 export default function CursosOnline() {

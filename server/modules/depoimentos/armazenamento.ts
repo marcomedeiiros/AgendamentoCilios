@@ -105,3 +105,47 @@ export async function gravarFoto(dataUrl: string | undefined): Promise<string | 
   await fs.writeFile(path.join(dirUploads, nomeArquivo), binario);
   return `/uploads/${nomeArquivo}`;
 }
+
+/** Todos os depoimentos, inclusive os pendentes — só o painel usa. */
+export function listarTodos(): Promise<Depoimento[]> {
+  return enfileirar(async () => {
+    const todos = await lerTodos();
+    return todos.sort((a, b) => b.criadoEm.localeCompare(a.criadoEm));
+  });
+}
+
+export function aprovar(id: string, valor: boolean): Promise<boolean> {
+  return enfileirar(async () => {
+    const todos = await lerTodos();
+    const alvo = todos.find((d) => d.id === id);
+    if (!alvo) return false;
+
+    alvo.aprovado = valor;
+    await fs.writeFile(arquivo, JSON.stringify(todos, null, 2), 'utf8');
+    return true;
+  });
+}
+
+export function excluir(id: string): Promise<boolean> {
+  return enfileirar(async () => {
+    const todos = await lerTodos();
+    const alvo = todos.find((d) => d.id === id);
+    if (!alvo) return false;
+
+    await fs.writeFile(
+      arquivo,
+      JSON.stringify(
+        todos.filter((d) => d.id !== id),
+        null,
+        2,
+      ),
+      'utf8',
+    );
+
+    // A foto some junto: guardá-la sem o depoimento não serve para nada.
+    if (alvo.foto) {
+      await fs.rm(path.join(dirUploads, path.basename(alvo.foto)), { force: true });
+    }
+    return true;
+  });
+}

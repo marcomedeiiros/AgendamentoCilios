@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CalendarDays, CheckCircle2, Clock, Phone, ShieldCheck, User } from 'lucide-react';
-import { fotos, servicos, site } from '../data/site';
+import { useConteudo } from '../hooks/useConteudo';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 type Formulario = {
@@ -28,6 +28,8 @@ const campoBase =
 const hoje = new Date().toISOString().slice(0, 10);
 
 export default function Agendamento() {
+  const { site, fotos, servicos } = useConteudo();
+
   usePageMeta(
     'Agendar horário | Alicia Lash Designer',
     'Solicite seu horário para extensão de cílios, volume russo ou lash lifting com a Alicia Lash Designer.',

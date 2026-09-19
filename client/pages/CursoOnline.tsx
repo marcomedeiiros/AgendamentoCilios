@@ -58,6 +58,13 @@ export default function CursoOnline() {
   }, [slug, sessao]);
 
   async function comprar() {
+    if (previa) {
+      setErro(
+        'A compra ainda não está ligada neste ambiente. Fale com o studio pelo WhatsApp para garantir sua vaga.',
+      );
+      return;
+    }
+
     if (!sessao?.user) {
       navegar(`/entrar?voltarPara=/curso/${slug}`);
       return;
@@ -97,7 +104,7 @@ export default function CursoOnline() {
   }
 
   const aula = curso.aulas.find((a) => a.id === aulaAtual) ?? null;
-  const podeComprar = !previa && !curso.matriculada;
+
 
   return (
     <>
@@ -181,7 +188,7 @@ export default function CursoOnline() {
               <h2 className="font-display text-3xl text-ink">Conteúdo do curso</h2>
               <p className="mt-2 text-ink-soft">
                 {curso.aulas.length} aulas
-                {curso.matriculada ? '' : ' — as gratuitas você já pode assistir'}
+                {curso.matriculada ? '' : ' as gratuitas você já pode assistir'}
               </p>
 
               <ol className="mt-6 divide-y divide-blush-100 overflow-hidden rounded-[1.5rem] border border-blush-100 bg-cream">
@@ -275,22 +282,15 @@ export default function CursoOnline() {
                     </p>
                   )}
 
-                  {podeComprar ? (
-                    <button
-                      type="button"
-                      onClick={comprar}
-                      disabled={comprando}
-                      className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-blush-600 px-7 py-3.5 font-semibold text-cream transition-colors hover:bg-blush-700 disabled:opacity-60"
-                    >
-                      {comprando && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
-                      {comprando ? 'Abrindo pagamento...' : 'Comprar curso'}
-                    </button>
-                  ) : (
-                    <p className="mt-6 rounded-2xl border border-blush-200 bg-cream px-5 py-4 text-sm leading-relaxed text-ink-soft">
-                      A compra será liberada assim que o pagamento estiver configurado. Fale com o
-                      studio pelo WhatsApp para garantir sua vaga.
-                    </p>
-                  )}
+                  <button
+                    type="button"
+                    onClick={comprar}
+                    disabled={comprando}
+                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-blush-600 px-7 py-3.5 font-semibold text-cream transition-colors hover:bg-blush-700 disabled:opacity-60"
+                  >
+                    {comprando && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                    {comprando ? 'Abrindo pagamento...' : 'Comprar curso'}
+                  </button>
 
                   <p className="mt-4 text-center text-xs leading-relaxed text-ink-soft">
                     Pagamento pelo Mercado Pago, com PIX, cartão ou boleto.

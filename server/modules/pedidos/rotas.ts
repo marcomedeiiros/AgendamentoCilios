@@ -11,7 +11,7 @@ const API_URL = process.env.BETTER_AUTH_URL ?? "http://localhost:3000";
 
 /**
  * Inicia a compra de um curso: cria o pedido como PENDING e devolve a URL do
- * checkout. Quem libera o acesso é o webhook, nunca esta rota — o retorno do
+ * checkout. Quem libera o acesso é o webhook, nunca esta rota o retorno do
  * navegador é controlado pela cliente e não prova pagamento nenhum.
  */
 rotasPedidos.post("/", exigirLogin, async (req, res) => {
@@ -85,7 +85,7 @@ rotasPedidos.post("/", exigirLogin, async (req, res) => {
   }
 });
 
-/** Situação de um pedido — a tela de retorno consulta isto. */
+/** Situação de um pedidoa tela de retorno consulta isto. */
 rotasPedidos.get("/:id", exigirLogin, async (req, res) => {
   const pedido = await prisma.order.findFirst({
     where: { id: String(req.params.id), userId: req.usuario!.id },

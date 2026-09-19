@@ -5,7 +5,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 // nova para manter atualizada.
 //
 // O access token é secreto e só existe aqui no servidor. O cartão da cliente
-// nunca passa pela nossa aplicação — ela paga na página do Mercado Pago.
+// nunca passa pela nossa aplicação ela paga na página do Mercado Pago.
 const API = "https://api.mercadopago.com";
 
 export class MercadoPagoNaoConfigurado extends Error {
@@ -47,7 +47,7 @@ type Preferencia = { id: string; init_point: string; sandbox_init_point: string 
 
 /**
  * Cria a preferência de pagamento e devolve a URL do checkout.
- * `externalReference` é o id do nosso pedido — é por ele que o webhook
+ * `externalReference` é o id do nosso pedido é por ele que o webhook
  * encontra a compra depois.
  */
 export async function criarPreferencia(entrada: {

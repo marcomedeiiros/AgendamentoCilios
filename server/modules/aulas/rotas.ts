@@ -21,7 +21,7 @@ const TIPOS_VIDEO: Record<string, string> = {
  * Entrega o vídeo da aula.
  *
  * O arquivo fica fora de qualquer pasta estática: o caminho real nunca chega
- * ao navegador. Cada requisição confere matrícula — sem isso bastaria a URL
+ * ao navegador. Cada requisição confere matrícula sem isso bastaria a URL
  * vazar para o curso virar público.
  *
  * Responde a Range porque o player precisa disso para avançar no vídeo; sem
@@ -103,7 +103,7 @@ rotasAulas.get("/:id/video", async (req, res) => {
 /**
  * Envio do vídeo de uma aula (só admin).
  *
- * O corpo da requisição é o arquivo puro, em stream direto para o disco —
+ * O corpo da requisição é o arquivo puro, em stream direto para o disco 
  * nada de multipart em memória, que estouraria com vídeo de aula. Exemplo:
  *
  *   curl -X PUT --data-binary @aula1.mp4 \

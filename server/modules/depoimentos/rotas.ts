@@ -51,7 +51,7 @@ function validar(corpo: Corpo) {
 }
 
 // Limite simples em memória. Não sobrevive a um restart e não cobre vários
-// processos — segura envio repetido do mesmo navegador, que é o caso comum.
+// processos egura envio repetido do mesmo navegador, que é o caso comum.
 const envios = new Map<string, number[]>();
 const JANELA_MS = 60 * 60 * 1000;
 const MAXIMO_POR_HORA = 5;

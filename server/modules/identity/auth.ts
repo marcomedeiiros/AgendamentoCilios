@@ -5,7 +5,7 @@ import { admin } from "better-auth/plugins";
 import { prisma } from "../shared/prisma";
 
 // A profissional é a única conta com role="admin". Quem se cadastra para
-// comprar curso recebe o role="user" padrão do plugin — não existe caminho de
+// comprar curso recebe o role="user" padrão do plugin não existe caminho de
 // código que promova aluna a admin.
 //
 // adminRoles (por papel) em vez de adminUserIds (por id), porque a forma por id

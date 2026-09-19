@@ -76,7 +76,7 @@ export default function PagamentoRetorno() {
       Icone: Clock,
       titulo: 'Pagamento em processamento',
       texto:
-        'PIX e boleto podem levar alguns minutos para compensar. Assim que cair, o curso aparece na sua conta — você não precisa pagar de novo.',
+        'PIX e boleto podem levar alguns minutos para compensar. Assim que cair, o curso aparece na sua conta você não precisa pagar de novo.',
     },
     falha: {
       Icone: XCircle,

@@ -12,6 +12,8 @@ import { rotasCursos } from "./modules/cursos/rotas";
 import { rotasPedidos } from "./modules/pedidos/rotas";
 import { rotasPagamentos } from "./modules/pagamentos/rotas";
 import { rotasAulas } from "./modules/aulas/rotas";
+import { rotasAdmin } from "./modules/admin/rotas";
+import { rotasConteudo } from "./modules/conteudo/rotas";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -37,6 +39,8 @@ app.use("/api/cursos", rotasCursos);
 app.use("/api/pedidos", rotasPedidos);
 app.use("/api/pagamentos", rotasPagamentos);
 app.use("/api/aulas", rotasAulas);
+app.use("/api/conteudo", rotasConteudo);
+app.use("/api/admin", rotasAdmin);
 
 // Qualquer erro não tratado vira 500 genérico: mensagem de banco ou stack
 // trace não pode chegar ao navegador.

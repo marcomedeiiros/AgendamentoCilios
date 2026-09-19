@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { AtSign, Clock, Mail, MapPin, Phone } from 'lucide-react';
 import Logo from './Logo';
-import { site } from '../data/site';
+import { useConteudo } from '../hooks/useConteudo';
 
 export default function SiteFooter() {
+  const { site } = useConteudo();
+
   return (
     <footer id="contato" className="bg-blush-900 text-blush-100">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-3 md:py-20">

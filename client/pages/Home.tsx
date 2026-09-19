@@ -1,15 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Clock, RefreshCw, ShieldCheck, Sparkles, Star } from 'lucide-react';
-import { fotos, servicos, site } from '../data/site';
+import { useConteudo } from '../hooks/useConteudo';
 import Depoimentos from '../components/Depoimentos';
 import { usePageMeta } from '../hooks/usePageMeta';
-
-const numeros = [
-  { valor: '7 anos', rotulo: 'de studio em Piúma' },
-  { valor: '+2.400', rotulo: 'atendimentos realizados' },
-  { valor: '+180', rotulo: 'profissionais formadas' },
-  { valor: '4,9/5', rotulo: 'média de avaliação' },
-];
 
 const diferenciais = [
   {
@@ -33,6 +26,8 @@ const diferenciais = [
 ];
 
 export default function Home() {
+  const { site, fotos, numeros, servicos } = useConteudo();
+
   usePageMeta(
     'Alicia Lash Designer | Extensão de cílios e formação profissional',
     'Studio especializado em extensão de cílios, volume russo e lash lifting em Piúma, no Espírito Santo. Agende sua avaliação.',

@@ -1,11 +1,22 @@
-// Fotos do site. São imagens de banco (placeholder) — troque cada `src` pela
+// Fotos do site. São imagens de banco (placeholder) troque cada `src` pela
 // foto real do studio. Se os arquivos forem locais, coloque-os em public/fotos/
 // e use o caminho '/fotos/nome.jpg'. O `alt` descreve a imagem para leitores
 // de tela e para quando a foto não carrega: reescreva junto com a troca.
 const unsplash = (id: string, w: number) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
 
-export const site = {
+export type Contato = {
+  name: string;
+  tagline: string;
+  phone: string;
+  whatsapp: string;
+  email: string;
+  address: string;
+  hours: string;
+  instagram: string;
+};
+
+export const site: Contato = {
   name: 'Alicia Lash Designer',
   tagline: 'Design de olhar e formação profissional',
   phone: '(11) 4000-0000',
@@ -14,7 +25,7 @@ export const site = {
   address: 'Piuma - ES',
   hours: 'Terça a sábado, das 9h às 19h',
   instagram: 'https://www.instagram.com/alicialashdesigner__?stkn=MXVwbW1uMGNvZGF5',
-} as const;
+};
 
 export type Servico = {
   slug: string;
@@ -102,11 +113,13 @@ export const cursos = [
   },
 ] as const;
 
-export const fotos = {
+export type FotosSite = { hero: string; studio: string; agendamento: string };
+
+export const fotos: FotosSite = {
   hero: unsplash('photo-1487412947147-5cebf100ffc2', 1000),
   studio: unsplash('photo-1633681926022-84c23e8cb2d6', 1000),
   agendamento: unsplash('photo-1560066984-138dadb4c035', 1000),
-} as const;
+};
 
 export type Depoimento = {
   nome: string;
@@ -142,7 +155,7 @@ export const depoimentosFixos: Depoimento[] = [
   },
 ];
 
-/** Opções oferecidas no formulário — precisam bater com a lista do servidor. */
+/** Opções oferecidas no formulário precisam bater com a lista do servidor. */
 export const servicosDepoimento = [
   'Extensão fio a fio',
   'Volume russo',
