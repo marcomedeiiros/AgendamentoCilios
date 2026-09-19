@@ -11,14 +11,11 @@ export default function Logo({ tone = 'dark' }: Props) {
     <Link to="/" aria-label={`${site.name} — página inicial`} className="inline-flex items-center">
       {tone === 'dark' ? (
         <img
-          src="/logo.jpg"
+          src="/logo.png"
           alt={site.name}
-          width={600}
-          height={493}
-          // A arte vem sobre fundo branco; o multiply apaga esse branco contra
-          // o creme do site. Só funciona em fundo claro — daí o logotipo em
-          // texto no rodapé escuro.
-          className="h-14 w-auto mix-blend-multiply md:h-20"
+          width={360}
+          height={296}
+          className="h-14 w-auto md:h-20"
         />
       ) : (
         <span className="flex flex-col leading-none text-cream">
