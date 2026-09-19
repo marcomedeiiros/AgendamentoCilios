@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Clock, RefreshCw, ShieldCheck, Sparkles, Star } from 'lucide-react';
-import { fotos, galeria, servicos, site } from '../data/site';
+import { fotos, servicos, site } from '../data/site';
+import Depoimentos from '../components/Depoimentos';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 const numeros = [
@@ -28,27 +29,6 @@ const diferenciais = [
     titulo: 'Acompanhamento pós-procedimento',
     texto:
       'Orientações de cuidado por escrito e retorno para ajuste em até 7 dias, sem custo adicional.',
-  },
-];
-
-const depoimentos = [
-  {
-    texto:
-      'Resultado natural e simétrico, exatamente como foi combinado na avaliação. A retenção passou de quatro semanas.',
-    autora: 'Marina R.',
-    contexto: 'Volume russo',
-  },
-  {
-    texto:
-      'O atendimento é pontual e o ambiente, impecável. Explicaram todos os cuidados antes e depois do procedimento.',
-    autora: 'Camila T.',
-    contexto: 'Extensão fio a fio',
-  },
-  {
-    texto:
-      'Fiz a formação completa e saí atendendo com segurança. O suporte depois do curso fez toda a diferença.',
-    autora: 'Juliana P.',
-    contexto: 'Aluna da formação',
   },
 ];
 
@@ -236,68 +216,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Galeria */}
-      <section id="galeria" className="scroll-mt-24 py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="max-w-2xl">
-            <p className="eyebrow text-blush-600">Galeria</p>
-            <h2 className="mt-4 font-display text-4xl text-ink md:text-5xl">O studio por dentro</h2>
-            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-              Um pouco do ambiente, dos materiais e do cuidado em cada etapa do atendimento.
-            </p>
-          </div>
-
-          <div className="mt-12 grid auto-rows-[180px] grid-cols-2 gap-4 md:auto-rows-[220px] md:grid-cols-4">
-            {galeria.map((foto) => (
-              <figure
-                key={foto.src}
-                className={`group overflow-hidden rounded-[1.5rem] border border-blush-100 bg-sand ${
-                  foto.formato === 'destaque' ? 'col-span-2 row-span-2' : ''
-                } ${foto.formato === 'larga' ? 'col-span-2' : ''}`}
-              >
-                <img
-                  src={foto.src}
-                  alt={foto.alt}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Depoimentos */}
-      <section className="border-t border-blush-100 bg-sand py-20 md:py-28" aria-label="Depoimentos de clientes">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <p className="eyebrow text-blush-600">Depoimentos</p>
-          <h2 className="mt-4 max-w-2xl font-display text-4xl text-ink md:text-5xl">
-            O que dizem as clientes e alunas
-          </h2>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {depoimentos.map((d) => (
-              <figure
-                key={d.autora}
-                className="flex h-full flex-col rounded-[1.75rem] border border-blush-100 bg-cream p-8"
-              >
-                <div className="flex gap-1" aria-label="Avaliação: 5 de 5 estrelas">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-gold text-gold" aria-hidden="true" />
-                  ))}
-                </div>
-                <blockquote className="mt-5 flex-grow leading-relaxed text-ink-soft">
-                  {d.texto}
-                </blockquote>
-                <figcaption className="mt-6 border-t border-blush-100 pt-5">
-                  <span className="block font-semibold text-ink">{d.autora}</span>
-                  <span className="text-sm text-ink-soft">{d.contexto}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Depoimentos />
 
       {/* Chamada final */}
       <section className="pb-24">

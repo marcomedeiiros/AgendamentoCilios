@@ -108,41 +108,45 @@ export const fotos = {
   agendamento: unsplash('photo-1560066984-138dadb4c035', 1000),
 } as const;
 
-// `formato` controla o mosaico: 'destaque' ocupa 2x2, 'larga' ocupa 2 colunas.
-// A ordem abaixo fecha um retângulo sem buraco; ao trocar as fotos, mantenha
-// uma 'destaque', quatro sem formato e duas 'larga'.
-export type Foto = { src: string; alt: string; formato?: 'destaque' | 'larga' };
+export type Depoimento = {
+  nome: string;
+  texto: string;
+  nota: number;
+  servico: string;
+  foto?: string | null;
+};
 
-export const galeria: Foto[] = [
+// Depoimentos fixos do studio. Os enviados pelas clientes chegam da API
+// (/api/depoimentos) e aparecem junto destes depois de aprovados.
+export const depoimentosFixos: Depoimento[] = [
   {
-    src: unsplash('photo-1570172619644-dfd03ed5d881', 900),
-    alt: 'Cliente deitada durante a aplicação, com os olhos fechados',
-    formato: 'destaque',
+    nome: 'Marina R.',
+    servico: 'Volume russo',
+    nota: 5,
+    texto:
+      'Resultado natural e simétrico, exatamente como foi combinado na avaliação. A retenção passou de quatro semanas.',
   },
   {
-    src: unsplash('photo-1595476108010-b4d1f102b1b1', 600),
-    alt: 'Profissional preparando os materiais antes do atendimento',
+    nome: 'Camila T.',
+    servico: 'Extensão fio a fio',
+    nota: 5,
+    texto:
+      'O atendimento é pontual e o ambiente, impecável. Explicaram todos os cuidados antes e depois do procedimento.',
   },
   {
-    src: unsplash('photo-1526045478516-99145907023c', 600),
-    alt: 'Pincéis e ferramentas organizados na bancada',
-  },
-  {
-    src: unsplash('photo-1502823403499-6ccfcf4fb453', 600),
-    alt: 'Retrato em perfil destacando o desenho do olhar',
-  },
-  {
-    src: unsplash('photo-1616394584738-fc6e612e71b9', 600),
-    alt: 'Etapa de cuidado da pele durante o procedimento',
-  },
-  {
-    src: unsplash('photo-1596462502278-27bfdc403348', 900),
-    alt: 'Produtos e cosméticos organizados na bancada do studio',
-    formato: 'larga',
-  },
-  {
-    src: unsplash('photo-1571875257727-256c39da42af', 900),
-    alt: 'Composição de produtos de beleza usados no atendimento',
-    formato: 'larga',
+    nome: 'Juliana P.',
+    servico: 'Curso / formação',
+    nota: 5,
+    texto:
+      'Fiz a formação completa e saí atendendo com segurança. O suporte depois do curso fez toda a diferença.',
   },
 ];
+
+/** Opções oferecidas no formulário — precisam bater com a lista do servidor. */
+export const servicosDepoimento = [
+  'Extensão fio a fio',
+  'Volume russo',
+  'Lash lifting',
+  'Manutenção',
+  'Curso / formação',
+] as const;

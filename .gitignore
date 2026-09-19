@@ -46,3 +46,6 @@ next-env.d.ts
 # editor/local
 .vscode/*
 !.vscode/settings.json
+
+# dados enviados em runtime (depoimentos e fotos das clientes)
+/server/data

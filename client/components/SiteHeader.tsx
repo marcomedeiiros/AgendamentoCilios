@@ -6,8 +6,8 @@ import Logo from './Logo';
 const links = [
   { to: '/#servicos', label: 'Serviços' },
   { to: '/#studio', label: 'O studio' },
-  { to: '/#galeria', label: 'Galeria' },
   { to: '/cursos', label: 'Formação' },
+  { to: '/#depoimentos', label: 'Depoimentos' },
   { to: '/#contato', label: 'Contato' },
 ];
 
