@@ -73,8 +73,7 @@ export const cursos = [
     formato: 'Presencial + material de apoio online',
     preco: 'R$ 799,00',
     parcelas: 'ou 12x de R$ 79,90',
-    imagem:
-      'https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80&w=800',
+    imagem: unsplash('photo-1599305090598-fe179d501227', 800),
     destaque: true,
     inclui: [
       'Kit profissional de materiais incluso',
@@ -92,8 +91,7 @@ export const cursos = [
     formato: 'Presencial, turmas de até 6 alunas',
     preco: 'R$ 450,00',
     parcelas: 'ou 12x de R$ 45,00',
-    imagem:
-      'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=800',
+    imagem: unsplash('photo-1522337360788-8b13dee7a37e', 800),
     destaque: false,
     inclui: [
       'Pré-requisito: curso básico concluído',
@@ -106,7 +104,7 @@ export const cursos = [
 
 export const fotos = {
   hero: unsplash('photo-1487412947147-5cebf100ffc2', 1000),
-  studio: unsplash('photo-1633681926022-84c23e8cb2d8', 1000),
+  studio: unsplash('photo-1633681926022-84c23e8cb2d6', 1000),
   agendamento: unsplash('photo-1560066984-138dadb4c035', 1000),
 } as const;
 
