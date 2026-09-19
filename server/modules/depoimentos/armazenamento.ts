@@ -106,7 +106,7 @@ export async function gravarFoto(dataUrl: string | undefined): Promise<string | 
   return `/uploads/${nomeArquivo}`;
 }
 
-/** Todos os depoimentos, inclusive os pendentes — só o painel usa. */
+/** Todos os depoimentos, inclusive os pendentes só o painel usa. */
 export function listarTodos(): Promise<Depoimento[]> {
   return enfileirar(async () => {
     const todos = await lerTodos();

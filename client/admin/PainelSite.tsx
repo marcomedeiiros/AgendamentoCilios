@@ -148,7 +148,7 @@ export default function PainelSite() {
 
         {numeros.map((n, i) => (
           <div key={i} className="grid gap-4 md:grid-cols-2">
-            <Campo label={`Destaque ${i + 1} — número`}>
+            <Campo label={`Destaque ${i + 1} número`}>
               <input
                 className={campo}
                 value={n.valor}

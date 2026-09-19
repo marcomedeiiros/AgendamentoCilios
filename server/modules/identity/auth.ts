@@ -8,7 +8,7 @@ const emDesenvolvimento = process.env.NODE_ENV !== "production";
 
 /**
  * Origens aceitas no login. O Better Auth recusa qualquer outra com
- * "Invalid origin" — é a proteção contra CSRF, então a lista existe de
+ * "Invalid origin" é a proteção contra CSRF, então a lista existe de
  * propósito.
  *
  * O detalhe que pega: `localhost` e `127.0.0.1` são origens DIFERENTES para o
@@ -48,7 +48,7 @@ export const auth = betterAuth({
     user: {
       create: {
         // Bootstrap: a primeira conta do sistema vira admin, para o painel ser
-        // acessível sem terminal. Vale só enquanto a tabela está vazia — da
+        // acessível sem terminal. Vale só enquanto a tabela está vazia  da
         // segunda conta em diante todo mundo entra como "user".
         after: async (usuario) => {
           const total = await prisma.user.count();

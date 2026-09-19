@@ -72,7 +72,7 @@ export default function PainelCursos() {
     const r = await adminApi.excluirCurso(curso.id);
     if (r.despublicado) {
       alert(
-        `O curso tem ${r.matriculas} aluna(s) matriculada(s), então ele não foi apagado — só saiu do site. Apagar tiraria o acesso de quem pagou.`,
+        `O curso tem ${r.matriculas} aluna(s) matriculada(s), então ele não foi apagado só saiu do site. Apagar tiraria o acesso de quem pagou.`,
       );
     }
     carregar();

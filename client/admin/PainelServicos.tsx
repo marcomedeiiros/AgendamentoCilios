@@ -153,7 +153,7 @@ export default function PainelServicos() {
 
       {itens.length === 0 ? (
         <p className="text-ink-soft">
-          Nenhum serviço cadastrado — o site está mostrando a lista padrão do código.
+          Nenhum serviço cadastrado o site está mostrando a lista padrão do código.
         </p>
       ) : (
         <ul className="space-y-4">

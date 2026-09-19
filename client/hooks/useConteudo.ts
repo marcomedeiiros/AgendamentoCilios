@@ -31,7 +31,7 @@ function duracaoLegivel(minutos: number) {
 /**
  * Conteúdo do site: o que o painel salvou, com o conteúdo do código como
  * padrão. Sem banco, ou antes de qualquer edição, o site fica exatamente como
- * está hoje — nada de tela vazia.
+ * está hoje nada de tela vazia.
  */
 export function useConteudo() {
   const [site, setSite] = useState(sitePadrao);

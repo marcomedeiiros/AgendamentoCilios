@@ -8,7 +8,7 @@ import { prisma } from "../server/modules/shared/prisma";
  *
  *   npm run admin:criar -- alicia@exemplo.com "SenhaForte123" "Alicia"
  *
- * A senha é passada para o Better Auth, que faz o hash — ela nunca é gravada
+ * A senha é passada para o Better Auth, que faz o hash ela nunca é gravada
  * em texto puro nem fica no código. Se a conta já existir, o script só troca o
  * papel para admin, sem mexer na senha.
  */

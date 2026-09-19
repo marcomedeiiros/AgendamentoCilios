@@ -31,22 +31,22 @@ Em `/admin`, só para contas com `role: "admin"`. Crie a sua com:
 npm run admin:criar -- alicia@exemplo.com "SuaSenhaForte" "Alicia"
 ```
 
-A senha vai para o Better Auth, que faz o hash — ela não fica em texto puro em
+A senha vai para o Better Auth, que faz o hash ela não fica em texto puro em
 lugar nenhum. Se a conta já existir, o comando só promove a admin.
 
 O painel tem cinco abas:
 
-- **Conteúdo do site** — contato, endereço, horário, Instagram, as fotos do topo,
+- **Conteúdo do site** contato, endereço, horário, Instagram, as fotos do topo,
   da seção "O studio" e do agendamento, e os quatro números da home.
-- **Serviços** — criar, editar e tirar do site, cada um com sua foto.
-- **Cursos** — criar e editar curso, subir capa, adicionar e apagar aulas, subir
+- **Serviços** criar, editar e tirar do site, cada um com sua foto.
+- **Cursos**   criar e editar curso, subir capa, adicionar e apagar aulas, subir
   o vídeo de cada uma e marcar aula como amostra grátis.
-- **Depoimentos** — publicar, tirar do site e excluir.
-- **Vendas** — as últimas 100 compras com a situação do pagamento.
+- **Depoimentos**   publicar, tirar do site e excluir.
+- **Vendas**   as últimas 100 compras com a situação do pagamento.
 
 Duas exclusões são propositalmente parciais: serviço sai do site mas continua no
 banco (é referência de agendamento antigo), e curso com aluna matriculada é
-despublicado em vez de apagado — apagar tiraria o acesso de quem pagou.
+despublicado em vez de apagado   apagar tiraria o acesso de quem pagou.
 
 Enquanto nada for editado no painel, o site usa o conteúdo que está no código.
 

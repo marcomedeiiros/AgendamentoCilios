@@ -22,7 +22,7 @@ const emDesenvolvimento = process.env.NODE_ENV !== "production";
 
 // credentials: o cookie de sessão precisa atravessar as duas portas no dev.
 // Em desenvolvimento o navegador pode chegar por localhost, 127.0.0.1 ou IP da
-// rede; refletir a origem evita bloqueio bobo. Em produção, só o APP_URL —
+// rede; refletir a origem evita bloqueio bobo. Em produção, só o APP_URL 
 // quem de fato valida a origem no login é o Better Auth.
 app.use(cors({ origin: emDesenvolvimento ? true : origemApp, credentials: true }));
 
