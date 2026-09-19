@@ -88,3 +88,55 @@ export const cursos = [
     ],
   },
 ] as const;
+
+// Fotos do site. São imagens de banco (placeholder) — troque cada `src` pela
+// foto real do studio. Se os arquivos forem locais, coloque-os em public/fotos/
+// e use o caminho '/fotos/nome.jpg'. O `alt` descreve a imagem para leitores
+// de tela e para quando a foto não carrega: reescreva junto com a troca.
+const unsplash = (id: string, w: number) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
+
+export const fotos = {
+  hero: unsplash('photo-1487412947147-5cebf100ffc2', 1000),
+  studio: unsplash('photo-1633681926022-84c23e8cb2d8', 1000),
+  agendamento: unsplash('photo-1560066984-138dadb4c035', 1000),
+} as const;
+
+// `formato` controla o mosaico: 'destaque' ocupa 2x2, 'larga' ocupa 2 colunas.
+// A ordem abaixo fecha um retângulo sem buraco; ao trocar as fotos, mantenha
+// uma 'destaque', quatro sem formato e duas 'larga'.
+export type Foto = { src: string; alt: string; formato?: 'destaque' | 'larga' };
+
+export const galeria: Foto[] = [
+  {
+    src: unsplash('photo-1570172619644-dfd03ed5d881', 900),
+    alt: 'Cliente deitada durante a aplicação, com os olhos fechados',
+    formato: 'destaque',
+  },
+  {
+    src: unsplash('photo-1595476108010-b4d1f102b1b1', 600),
+    alt: 'Profissional preparando os materiais antes do atendimento',
+  },
+  {
+    src: unsplash('photo-1526045478516-99145907023c', 600),
+    alt: 'Pincéis e ferramentas organizados na bancada',
+  },
+  {
+    src: unsplash('photo-1502823403499-6ccfcf4fb453', 600),
+    alt: 'Retrato em perfil destacando o desenho do olhar',
+  },
+  {
+    src: unsplash('photo-1616394584738-fc6e612e71b9', 600),
+    alt: 'Etapa de cuidado da pele durante o procedimento',
+  },
+  {
+    src: unsplash('photo-1596462502278-27bfdc403348', 900),
+    alt: 'Produtos e cosméticos organizados na bancada do studio',
+    formato: 'larga',
+  },
+  {
+    src: unsplash('photo-1571875257727-256c39da42af', 900),
+    alt: 'Composição de produtos de beleza usados no atendimento',
+    formato: 'larga',
+  },
+];

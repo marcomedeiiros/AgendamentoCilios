@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Clock, RefreshCw, ShieldCheck, Sparkles, Star } from 'lucide-react';
-import { servicos, site } from '../data/site';
+import { fotos, galeria, servicos, site } from '../data/site';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 const numeros = [
@@ -21,7 +21,7 @@ const diferenciais = [
     icone: Sparkles,
     titulo: 'Mapeamento personalizado',
     texto:
-      'O desenho é definido a partir do formato dos olhos, da saúde do fio natural e da sua rotina não de um modelo pronto.',
+      'O desenho é definido a partir do formato dos olhos, da saúde do fio natural e da sua rotina, nunca de um modelo pronto.',
   },
   {
     icone: RefreshCw,
@@ -102,8 +102,8 @@ export default function Home() {
           <div className="relative">
             <div className="overflow-hidden rounded-[2rem] border border-blush-100 bg-sand shadow-xl shadow-blush-200/40">
               <img
-                src="https://images.unsplash.com/photo-1587775535165-27a9da859187?auto=format&fit=crop&q=80&w=1000"
-                alt="Profissional aplicando extensão de cílios em uma cliente"
+                src={fotos.hero}
+                alt="Close-up de um olhar com extensão de cílios aplicada"
                 width={1000}
                 height={1250}
                 className="h-[420px] w-full object-cover md:h-[560px]"
@@ -186,7 +186,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl gap-14 px-5 sm:px-8 md:grid-cols-2 md:items-center">
           <div className="overflow-hidden rounded-[2rem] border border-blush-100">
             <img
-              src="https://images.unsplash.com/photo-1512496015851-a1c8dc868351?auto=format&fit=crop&q=80&w=1000"
+              src={fotos.studio}
               alt="Ambiente do studio preparado para atendimento"
               width={1000}
               height={800}
@@ -223,8 +223,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Galeria */}
+      <section id="galeria" className="scroll-mt-24 py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="max-w-2xl">
+            <p className="eyebrow text-blush-600">Galeria</p>
+            <h2 className="mt-4 font-display text-4xl text-ink md:text-5xl">O studio por dentro</h2>
+            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+              Um pouco do ambiente, dos materiais e do cuidado em cada etapa do atendimento.
+            </p>
+          </div>
+
+          <div className="mt-12 grid auto-rows-[180px] grid-cols-2 gap-4 md:auto-rows-[220px] md:grid-cols-4">
+            {galeria.map((foto) => (
+              <figure
+                key={foto.src}
+                className={`group overflow-hidden rounded-[1.5rem] border border-blush-100 bg-sand ${
+                  foto.formato === 'destaque' ? 'col-span-2 row-span-2' : ''
+                } ${foto.formato === 'larga' ? 'col-span-2' : ''}`}
+              >
+                <img
+                  src={foto.src}
+                  alt={foto.alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Depoimentos */}
-      <section className="py-20 md:py-28" aria-label="Depoimentos de clientes">
+      <section className="border-t border-blush-100 bg-sand py-20 md:py-28" aria-label="Depoimentos de clientes">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <p className="eyebrow text-blush-600">Depoimentos</p>
           <h2 className="mt-4 max-w-2xl font-display text-4xl text-ink md:text-5xl">
@@ -235,7 +266,7 @@ export default function Home() {
             {depoimentos.map((d) => (
               <figure
                 key={d.autora}
-                className="flex h-full flex-col rounded-[1.75rem] border border-blush-100 bg-sand p-8"
+                className="flex h-full flex-col rounded-[1.75rem] border border-blush-100 bg-cream p-8"
               >
                 <div className="flex gap-1" aria-label="Avaliação: 5 de 5 estrelas">
                   {Array.from({ length: 5 }).map((_, i) => (

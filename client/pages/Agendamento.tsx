@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CalendarDays, CheckCircle2, Clock, Phone, ShieldCheck, User } from 'lucide-react';
-import { servicos, site } from '../data/site';
+import { fotos, servicos, site } from '../data/site';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 type Formulario = {
@@ -54,7 +54,7 @@ export default function Agendamento() {
           {/* Coluna informativa */}
           <aside className="relative flex min-h-[260px] flex-col justify-end bg-blush-800 p-8 md:col-span-5 md:min-h-[640px] md:p-12">
             <img
-              src="https://images.unsplash.com/photo-1512496015851-a1c8dc868351?auto=format&fit=crop&q=80&w=1000"
+              src={fotos.agendamento}
               alt=""
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover opacity-25"
@@ -153,7 +153,7 @@ export default function Agendamento() {
                         </option>
                       ))}
                       <option value="Manutenção">Manutenção de extensão existente</option>
-                      <option value="Avaliação">Ainda não sei quero uma avaliação</option>
+                      <option value="Avaliação">Ainda não sei, quero uma avaliação</option>
                     </select>
                   </div>
 
