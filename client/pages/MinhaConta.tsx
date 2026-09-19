@@ -4,6 +4,7 @@ import { PlayCircle } from 'lucide-react';
 import { signOut, useSession } from '../lib/auth';
 import { api, type Matricula } from '../lib/api';
 import { usePageMeta } from '../hooks/usePageMeta';
+import TrocarSenha from '../components/TrocarSenha';
 
 export default function MinhaConta() {
   usePageMeta('Minha conta | Alicia Lash Designer');
@@ -38,6 +39,7 @@ export default function MinhaConta() {
               Olá, {sessao.user.name?.split(' ')[0]}
             </h1>
             <p className="mt-2 text-ink-soft">{sessao.user.email}</p>
+            <TrocarSenha />
           </div>
 
           <button
