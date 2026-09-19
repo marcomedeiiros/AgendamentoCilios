@@ -18,6 +18,8 @@ rotasCursos.get("/", async (_req, res) => {
       description: true,
       priceCents: true,
       coverImage: true,
+      level: true,
+      durationHours: true,
       _count: { select: { lessons: true } },
     },
   });
@@ -73,6 +75,10 @@ rotasCursos.get("/:slug", async (req, res) => {
     description: curso.description,
     priceCents: curso.priceCents,
     coverImage: curso.coverImage,
+    level: curso.level,
+    durationHours: curso.durationHours,
+    forWho: curso.forWho,
+    includes: curso.includes,
     matriculada,
     aulas: curso.lessons.map((aula) => ({
       id: aula.id,

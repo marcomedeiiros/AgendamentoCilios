@@ -196,6 +196,12 @@ model Course {
   priceCents  Int
   coverImage  String?
   published   Boolean  @default(false)
+
+  // Informações da página do curso.
+  level         String? // "Iniciante", "Avançado"...
+  durationHours Int?
+  forWho        String?
+  includes      String[] // o que a aluna recebe, um item por linha
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 

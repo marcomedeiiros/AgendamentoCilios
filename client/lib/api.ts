@@ -6,6 +6,8 @@ export type Curso = {
   description: string;
   priceCents: number;
   coverImage: string | null;
+  level: string | null;
+  durationHours: number | null;
   totalAulas: number;
 };
 
@@ -21,6 +23,8 @@ export type Aula = {
 };
 
 export type CursoDetalhe = Omit<Curso, 'totalAulas'> & {
+  forWho: string | null;
+  includes: string[];
   matriculada: boolean;
   aulas: Aula[];
 };
