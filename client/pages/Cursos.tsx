@@ -44,8 +44,8 @@ export default function Cursos() {
           <div className="hidden md:block">
             <div className="overflow-hidden rounded-[2rem] border border-blush-100">
               <img
-                src="https://images.unsplash.com/photo-1574015974293-817f0ebebb74?auto=format&fit=crop&q=80&w=800"
-                alt="Aluna praticando aplicação de extensão de cílios durante o curso"
+                src="/fotos/cursos-capa.jpg"
+                alt="Cliente atendida no studio, resultado do método ensinado no curso"
                 width={800}
                 height={640}
                 className="h-[460px] w-full object-cover"

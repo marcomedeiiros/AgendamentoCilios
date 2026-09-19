@@ -1,9 +1,8 @@
-// Fotos do site. São imagens de banco (placeholder) troque cada `src` pela
-// foto real do studio. Se os arquivos forem locais, coloque-os em public/fotos/
-// e use o caminho '/fotos/nome.jpg'. O `alt` descreve a imagem para leitores
-// de tela e para quando a foto não carrega: reescreva junto com a troca.
-const unsplash = (id: string, w: number) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
+// As fotos do site são do próprio studio e ficam em public/fotos/, referenciadas
+// como '/fotos/nome.jpg'. Para trocar, o caminho normal é o painel em /admin —
+// mexer aqui só muda o padrão de quando o banco ainda não tem nada salvo.
+// O `alt` descreve a imagem para leitores de tela e para quando a foto não
+// carrega: reescreva junto com a troca.
 
 export type Contato = {
   name: string;
@@ -84,7 +83,7 @@ export const cursos = [
     formato: 'Presencial + material de apoio online',
     preco: 'R$ 799,00',
     parcelas: 'ou 12x de R$ 79,90',
-    imagem: unsplash('photo-1599305090598-fe179d501227', 800),
+    imagem: '/fotos/curso-formacao.jpg',
     destaque: true,
     inclui: [
       'Kit profissional de materiais incluso',
@@ -102,7 +101,7 @@ export const cursos = [
     formato: 'Presencial, turmas de até 6 alunas',
     preco: 'R$ 450,00',
     parcelas: 'ou 12x de R$ 45,00',
-    imagem: unsplash('photo-1522337360788-8b13dee7a37e', 800),
+    imagem: '/fotos/curso-masterclass.jpg',
     destaque: false,
     inclui: [
       'Pré-requisito: curso básico concluído',

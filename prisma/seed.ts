@@ -14,8 +14,7 @@ const cursos = [
       "Curso gravado com o método usado no studio: anatomia do fio, mapeamento do olhar, isolamento, colagem, biossegurança e precificação do serviço.\n\nVocê assiste quantas vezes quiser e volta nas aulas sempre que precisar revisar.",
     priceCents: 79900,
     published: true,
-    coverImage:
-      "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80&w=800",
+    coverImage: "/fotos/curso-formacao.jpg",
     level: "Do zero ao avançado",
     durationHours: 12,
     forWho:
@@ -44,8 +43,7 @@ const cursos = [
       "Montagem de leques, mapeamentos avançados, retenção e correção de casos difíceis. Indicado para quem já fez o curso básico e quer subir o nível do atendimento.",
     priceCents: 45000,
     published: true,
-    coverImage:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=800",
+    coverImage: "/fotos/curso-masterclass.jpg",
     level: "Avançado",
     durationHours: 6,
     forWho: "Para profissionais que já dominam o fio a fio e querem trabalhar com volume.",
